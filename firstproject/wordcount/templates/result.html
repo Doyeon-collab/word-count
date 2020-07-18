@@ -1,0 +1,52 @@
+
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        h1 {
+            font-size: 25px;
+            color: #00A3B6;
+        }
+        h2{
+            font-size: 20px;
+            color: #00A3B6;
+        }
+    </style>
+    </head>
+    <body>
+        {% block asd %}
+        {% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{%url 'home'%}">Wordcount</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{%url 'home'%}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'about'%}">ABOUT</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        <h1>당신이 입력한 텍스트는 {{total}}로 구성되어 있습니다.</h1>
+        <h1>총 글자 수는 {{len}}자입니다.(띄어쓰기 포함)</h1>
+        <h2>(1)입력한 텍스트</h2>
+        {{full}}
+        <br><br>
+        <h2>(2)단어 카운트: </h2>
+        {% for word, count in dictionary%}
+
+        {{word}} : {{count}}
+        <br>
+
+        {%endfor%}
+        <br><br>
+        <a href="{%url 'home'%}"class="btn btn-outline-info">다시하기</a>
+    </body>
+</html>
